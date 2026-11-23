@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 export default defineConfig(({ mode }) => {
   // URL publique du site, injectée dans les balises canonical / Open Graph de index.html
   const env = loadEnv(mode, process.cwd(), 'VITE_');
-  const siteUrl = (env.VITE_SITE_URL || 'https://rassusante.netlify.app').replace(/\/$/, '');
+  const siteUrl = (env.VITE_SITE_URL || 'https://arnica-lancement.netlify.app').replace(/\/$/, '');
   // Palette de couleurs : VITE_THEME=nouvelle (palette de l'équipe) ou originale
   const theme = env.VITE_THEME === 'originale' ? 'originale' : 'nouvelle';
 

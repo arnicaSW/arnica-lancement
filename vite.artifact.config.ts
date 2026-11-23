@@ -15,7 +15,7 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    { name: 'site-url', transformIndexHtml: (html: string) => html.replaceAll('__SITE_URL__', 'https://rassusante.netlify.app') },
+    { name: 'site-url', transformIndexHtml: (html: string) => html.replaceAll('__SITE_URL__', 'https://arnica-lancement.netlify.app') },
     viteSingleFile(),
   ],
   build: { outDir: 'dist-preview', target: 'es2020', assetsInlineLimit: 100_000_000 },
