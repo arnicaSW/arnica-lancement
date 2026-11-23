@@ -1,0 +1,45 @@
+/* ─────────────────────────────────────────────────────────────
+   Nouvelle palette RassuSanté (choisie par l'équipe)
+     #BEE2FF  #AEDAFF  bleus clairs
+     #295C91           bleu
+     #058258           vert
+     #015801           vert foncé
+     #094222           vert très foncé
+     #CE4B08           orange (boutons d'action)
+   Les teintes marquées « dérivée » sont calculées à partir de la palette
+   pour les fonds très clairs, les survols et les contrastes (WCAG AA).
+   ───────────────────────────────────────────────────────────── */
+:root {
+  /* Bleus */
+  --color-brand-50: #eef7ff;   /* dérivée */
+  --color-brand-100: #bee2ff;  /* palette */
+  --color-brand-200: #aedaff;  /* palette */
+  --color-brand-300: #7db6e8;  /* dérivée */
+  --color-brand-500: #3d74ad;  /* dérivée */
+  --color-brand-600: #295c91;  /* palette */
+  --color-brand-700: #295c91;  /* palette (boutons secondaires, choix sélectionnés) */
+  --color-brand-800: #1f4670;  /* dérivée (survol, encart « projet ») */
+  --color-brand-900: #094222;  /* palette : vert très foncé pour titres, bandeau, pied de page */
+
+  /* Verts */
+  --color-mint-50: #eff8f3;    /* dérivée */
+  --color-mint-100: #d3eedf;   /* dérivée */
+  --color-mint-200: #a8dcc2;   /* dérivée */
+  --color-mint-400: #3fae85;   /* dérivée */
+  --color-mint-500: #1c9467;   /* dérivée */
+  --color-mint-600: #058258;   /* palette */
+  --color-mint-700: #015801;   /* palette */
+
+  /* Orange */
+  --color-accent-50: #fff3eb;  /* dérivée */
+  --color-accent-100: #fde1cf; /* dérivée */
+  --color-accent-300: #f5ae85; /* dérivée */
+  --color-accent-400: #ec8048; /* dérivée */
+  --color-accent-500: #dd5f1a; /* dérivée */
+  --color-accent-600: #ce4b08; /* palette */
+  --color-accent-700: #a63c06; /* dérivée (survol, textes d'erreur) */
+
+  /* Textes */
+  --color-ink: #0b2a1c;        /* dérivée du vert très foncé */
+  --color-muted: #4b5f58;      /* dérivée, gris-vert lisible */
+}

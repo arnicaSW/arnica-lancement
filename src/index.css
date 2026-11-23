@@ -1,0 +1,122 @@
+@import 'tailwindcss';
+
+/* ─────────────────────────────────────────────────────────────
+   Palette RassuSanté (provisoire, modifiable ici uniquement)
+   brand  = bleu profond, confiance      mint   = vert d'eau, apaisement
+   accent = corail chaleureux pour les CTA (contraste AA vérifié sur blanc)
+   ───────────────────────────────────────────────────────────── */
+/* « static » : toutes les couleurs sont exposées en variables CSS (utilisées aussi par les SVG et la carte) */
+@theme static {
+  --font-sans: 'Fredoka Variable', 'Fredoka', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --color-brand-50: #f1f8fb;
+  --color-brand-100: #dceef5;
+  --color-brand-200: #b5dceb;
+  --color-brand-300: #7fc0db;
+  --color-brand-500: #1a86b0;
+  --color-brand-600: #12719a;
+  --color-brand-700: #0e5a78;
+  --color-brand-800: #0b4862;
+  --color-brand-900: #0a3446;
+
+  --color-mint-50: #eefaf5;
+  --color-mint-100: #d6f2e6;
+  --color-mint-200: #a9e3cb;
+  --color-mint-400: #4cc3a2;
+  --color-mint-500: #2ba889;
+  --color-mint-600: #1f8a6f;
+  --color-mint-700: #176e59;
+
+  --color-accent-50: #fff4ee;
+  --color-accent-100: #ffe3d3;
+  --color-accent-300: #fbab86;
+  --color-accent-400: #f7875c;
+  --color-accent-500: #ea6a3a;
+  --color-accent-600: #c2410c;
+  --color-accent-700: #9a3412;
+
+  --color-ink: #0f2733;
+  --color-muted: #4a6070;
+
+  --animate-blob: blob 18s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-ring: pulse-ring 3s ease-out infinite;
+  --animate-gradient: gradient 14s ease infinite;
+
+  @keyframes blob {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -40px) scale(1.08); }
+    66% { transform: translate(-25px, 20px) scale(0.95); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  @keyframes pulse-ring {
+    0% { transform: scale(0.6); opacity: 0.55; }
+    100% { transform: scale(1.6); opacity: 0; }
+  }
+  @keyframes gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-accent-500);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+  /* Sections ancrées : compensent l'en-tête collant */
+  section[id] { scroll-margin-top: 5rem; }
+
+  dialog::backdrop {
+    background: rgb(10 52 70 / 0.55);
+    backdrop-filter: blur(2px);
+  }
+}
+
+/* Respect strict de prefers-reduced-motion pour les animations CSS */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Carte Leaflet : bulles d'offres aux couleurs du site */
+.leaflet-container { font-family: var(--font-sans); }
+.rs-marker { background: none; border: none; }
+/* Pousses : grandissent depuis le pot et fleurissent quand la bulle est ouverte */
+.rs-plant { width: 100%; height: 100%; transform-origin: 50% 100%; transition: transform .5s cubic-bezier(.34, 1.56, .64, 1); filter: drop-shadow(0 3px 3px rgb(9 66 34 / .3)); }
+.rs-plant svg { display: block; overflow: visible; }
+.rs-marker:hover .rs-plant:not(.is-open), .rs-marker:focus-visible .rs-plant:not(.is-open) { transform: scale(1.15) rotate(-5deg); }
+.rs-plant.is-open { transform: scale(1.6); }
+.rs-plant .rs-stem { transform-box: fill-box; transform-origin: 50% 100%; transition: transform .5s cubic-bezier(.34, 1.56, .64, 1); }
+.rs-plant.is-open .rs-stem { transform: scaleY(1.12); }
+.rs-plant .rs-bloom > * { transform-box: fill-box; transform-origin: center; transform: scale(0) rotate(-90deg); transition: transform .45s cubic-bezier(.34, 1.56, .64, 1) .18s; }
+.rs-plant.is-open .rs-bloom > * { transform: scale(1) rotate(0); }
+.rs-popup .leaflet-popup-content-wrapper { border-radius: 18px; box-shadow: 0 14px 34px rgb(10 52 70 / 0.22); }
+.rs-popup .leaflet-popup-content { margin: 18px 20px 20px; }
+.rs-popup a.leaflet-popup-close-button { top: 8px; right: 8px; color: var(--color-muted); }
+.rs-pop p { margin: 0; }
+.rs-pop-badge { display: inline-block; padding: 2px 8px; border-radius: 999px; background: var(--color-accent-100); color: var(--color-accent-700); font-size: 11px; font-weight: 700; }
+.rs-pop-cat { margin-top: 10px !important; color: var(--color-muted); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .04em; }
+.rs-pop-title { margin-top: 2px !important; color: var(--color-brand-900); font-size: 18px; font-weight: 800; line-height: 1.25; }
+.rs-pop-deal { display: inline-block; margin-top: 10px !important; padding: 5px 12px; border-radius: 999px; background: var(--color-accent-600); color: #fff; font-size: 14px; font-weight: 700; }
+.rs-pop-addr { display: flex; gap: 6px; align-items: flex-start; margin-top: 12px !important; color: var(--color-ink); font-size: 13px; font-weight: 600; line-height: 1.4; }
+.rs-pop-addr svg { flex-shrink: 0; margin-top: 1px; color: var(--color-accent-600); }
+.leaflet-container a.rs-pop-link { display: block; margin-top: 14px; padding: 10px 14px; border-radius: 12px; background: var(--color-brand-900); color: #fff; text-align: center; font-size: 14px; font-weight: 700; text-decoration: none; transition: background .2s; }
+.leaflet-container a.rs-pop-link:hover { background: var(--color-brand-700); }
