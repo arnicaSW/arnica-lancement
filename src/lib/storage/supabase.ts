@@ -17,7 +17,9 @@ export function createSupabaseStorage(
   key: string,
   tables: { interest: string; survey: string; contacts: string; partners: string },
 ): InterestStorage {
-  const base = `${url.replace(/\/$/, '')}/rest/v1/`;
+  // Accepte l'URL du projet avec ou sans « /rest/v1/ » final (erreur de copie fréquente)
+  const projectUrl = url.trim().replace(/\/+$/, '').replace(/\/rest\/v1$/i, '');
+  const base = `${projectUrl}/rest/v1/`;
   const headers: Record<string, string> = {
     apikey: key,
     'Content-Type': 'application/json',
