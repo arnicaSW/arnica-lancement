@@ -293,6 +293,7 @@ export const legal = {
         body: [
           'Nom : arnica',
           'Contact : arnica.communication@gmail.com',
+          'Responsable de la publication : Colas Holtzscherer (colas.holtz@gmail.com)',
         ],
       },
       {
