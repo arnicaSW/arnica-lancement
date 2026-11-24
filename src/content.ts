@@ -2,8 +2,7 @@
  * ─────────────────────────────────────────────────────────────
  *  CONTENU DU SITE arnica
  *  Tous les textes de la page sont ici : modifiez-les librement.
- *  Les éléments marqués [À COMPLÉTER] doivent être renseignés
- *  avant la mise en ligne publique.
+ *  Les textes juridiques (mentions légales, confidentialité) sont dans l’export `legal`.
  * ─────────────────────────────────────────────────────────────
  */
 import type { IconName } from './lib/icons';
@@ -293,9 +292,7 @@ export const legal = {
         heading: 'Éditeur du site',
         body: [
           'Nom : arnica',
-          'Adresse : [À COMPLÉTER]',
           'Contact : arnica.communication@gmail.com',
-          'Responsable de la publication : [À COMPLÉTER]',
         ],
       },
       {
@@ -352,7 +349,7 @@ export const legal = {
       {
         heading: 'Durée de conservation',
         body: [
-          'Jusqu’au lancement de la plateforme, et au plus tard 24 mois après votre inscription. [À VALIDER]',
+          '12 mois après votre inscription. Vos données sont ensuite supprimées.',
         ],
       },
       {

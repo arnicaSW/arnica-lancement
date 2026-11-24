@@ -41,7 +41,7 @@ Autres commandes :
 
 **Tous les textes sont dans [`src/content.ts`](src/content.ts)** : hero, bénéfices, étapes, catégories, FAQ, formulaire, mentions légales, politique de confidentialité…
 
-- Recherchez `[À COMPLÉTER]` et `[À VALIDER]` : éditeur, contact, responsable de publication, durée de conservation.
+- Les mentions légales et la politique de confidentialité sont dans l’export `legal` (éditeur, contact, durée de conservation : 12 mois).
 - Une adresse e-mail renseignée dans `site.contactEmail` devient automatiquement un lien cliquable dans le pied de page.
 - Les `id` des catégories et les `value` des professions et types d'établissement sont enregistrés en base. Pour les changer, mettez aussi à jour les contraintes dans `supabase/schema.sql`.
 
